@@ -1,0 +1,5 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy
+mysql-connector-python
+pydantic[email]

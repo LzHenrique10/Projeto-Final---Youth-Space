@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="containerPai">
+        <div class="card cadastroActive">
+            <div class="esquerda">
+                <!-- Formulário de Login -->
+                <div class="formLogin">
+                    <h2>Fazer Login</h2>
+                    <form action="">
+                        <input type="email" name="email" placeholder="Email">
+                        <input type="password" name="senha" placeholder="Senha">
+                        <button type="submit">Entrar</button>
+                    </form>
+                </div> <!-- Fechando corretamente a formLogin -->
+
+                <!-- Seção para quem já tem uma conta -->
+                <div class="facaLogin">
+                    <h2>Já tem </br>uma conta?</h2>
+                    <p>Faça login e conecte-se com sua comunidade!
+                        Entre com sua conta e comece a explorar agora.
+                        Não perca tempo, sua experiência está a um clique de distância.</p>
+                    <button class="loginButton">Faça Login</button>
+                </div>
+            </div> <!-- Fechando corretamente a div esquerda -->
+
+            <div class="direita">
+                <!-- Formulário de Cadastro -->
+                <div class="formCadastro">
+                    <h2>Cadastro</h2>
+                    <form>
+                        <input type="text" name="nome" placeholder="Nome">
+                        <input type="email" name="email" placeholder="Email">
+                        <input type="password" name="senha" placeholder="Senha">
+                        <input type="password" name="senha" placeholder="Confirme a sua senha">
+                        <button type="submit">Cadastrar</button>
+                    </form>
+                </div>
+
+                <!-- Seção para quem não tem uma conta -->
+                <div class="facaCadastro">
+                    <h2>Não tem </br>uma conta?</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus cum sunt numquam blanditiis
+                        dolor ea, culpa debitis dicta consequatur amet? Molestias repellendus eius eos voluptatibus
+                        porro adipisci accusantium ad sed.</p>
+                    <button class="cadastroButton">Cadastre-se</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Seleciona o elemento com a classe 'card'
+let card = document.querySelector('.card');
+
+// Seleciona o botão de login
+let loginButton = document.querySelector('.loginButton');
+
+// Seleciona o botão de cadastro
+let cadastroButton = document.querySelector('.cadastroButton');
+
+// Adiciona um evento de clique ao botão de login
+loginButton.onclick = () => {
+    // Remove a classe 'cadastroActive' do card
+    card.classList.remove('cadastroActive');
+    // Adiciona a classe 'loginActive' ao card
+    card.classList.add('loginActive');
+}
+
+// Adiciona um evento de clique ao botão de cadastro
+cadastroButton.onclick = () => {
+    // Remove a classe 'loginActive' do card
+    card.classList.remove('loginActive');
+    // Adiciona a classe 'cadastroActive' ao card
+    card.classList.add('cadastroActive');
+}
+    </script>
+{% endblock %}
