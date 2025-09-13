@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+    <header class="Barra-de-Navegação">
+        <div class="nav">
+            <a href="#" class="youth-nav">Youth Space</a>
+            <a href="#" class="home-nav">Home</a>
+        </div>
+
     <section class="containerPai">
         <div class="card cadastroActive">
             <div class="esquerda">
                 <!-- Formulário de Login -->
                 <div class="formLogin">
                     <h2>Fazer Login</h2>
-                    <form action="">
+                    <form action="/home" method="get">
                         <input type="email" name="email" placeholder="Email">
                         <input type="password" name="senha" placeholder="Senha">
                         <button type="submit">Entrar</button>
@@ -40,9 +47,7 @@
                 <!-- Seção para quem não tem uma conta -->
                 <div class="facaCadastro">
                     <h2>Não tem </br>uma conta?</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus cum sunt numquam blanditiis
-                        dolor ea, culpa debitis dicta consequatur amet? Molestias repellendus eius eos voluptatibus
-                        porro adipisci accusantium ad sed.</p>
+                    <p>Crie sua conta em poucos segundos e aproveite todos os nossos recursos exclusivos. É rápido, fácil e gratuito!</p>
                     <button class="cadastroButton">Cadastre-se</button>
                 </div>
             </div>
