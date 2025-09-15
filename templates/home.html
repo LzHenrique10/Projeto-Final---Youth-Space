@@ -1,11 +1,12 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+
+{% block content %}
 
 <header class="header">
   <div class="header-content">
     <h1 class="logo">Gerenciamento Escolar</h1>
     <nav>
       <a href="/login" class="nav-link">Sair</a>
-      <!-- Redireciona pro login ou logout -->
     </nav>
   </div>
   <div class="stars"></div>
@@ -15,12 +16,10 @@
   <aside class="sidebar">
     <ul>
       <li>
-        <a href="/alunos/"><i class="fas fa-users"></i> Alunos</a>
+        <a href="#" id="link-alunos"><i class="fas fa-users"></i> Alunos</a>
       </li>
       <li>
-        <a href="/professores/"
-          ><i class="fas fa-chalkboard-teacher"></i> Professores</a
-        >
+        <a href="/professores/"><i class="fas fa-chalkboard-teacher"></i> Professores</a>
       </li>
       <li>
         <a href="/cursos/"><i class="fas fa-book"></i> Cursos</a>
@@ -29,15 +28,14 @@
         <a href="/turmas/"><i class="fas fa-layer-group"></i> Turmas</a>
       </li>
       <li>
-        <a href="/matriculas/"
-          ><i class="fas fa-clipboard-list"></i> Matrículas</a
-        >
+        <a href="/matriculas/"><i class="fas fa-clipboard-list"></i> Matrículas</a>
       </li>
     </ul>
   </aside>
 
   <section class="content">
     <h2>Bem-vindo, {{ user.nome if user else 'Usuário' }}!</h2>
+
     <div class="summary-cards">
       <div class="card-home">
         <h3>Alunos</h3>
@@ -59,10 +57,56 @@
 
     <div class="quick-actions">
       <a href="/alunos/create" class="btn">Cadastrar Aluno</a>
-      <!-- Ajuste pra rota de create se tiver -->
       <a href="/turmas/" class="btn">Ver Turmas</a>
     </div>
+
+    <!-- Card único com todos os alunos -->
+    <div id="alunos-container">
+      <div class="alunos-card-modern">
+        <button id="close-alunos" class="close-btn">X</button>
+        <h3>Alunos Cadastrados</h3>
+        <ul id="alunos-list"></ul>
+      </div>
+    </div>
+
   </section>
 </main>
+
+<script>
+  const alunosContainer = document.getElementById('alunos-container');
+  const alunosList = document.getElementById('alunos-list');
+  const linkAlunos = document.getElementById('link-alunos');
+  const closeAlunos = document.getElementById('close-alunos');
+
+  linkAlunos.addEventListener('click', async (e) => {
+    e.preventDefault();
+    alunosList.innerHTML = '';
+
+    try {
+      const res = await fetch('/alunos/');
+      const alunos = await res.json();
+
+      alunos.forEach(aluno => {
+        const li = document.createElement('li');
+        li.innerHTML = `${aluno.nome} - ${aluno.email} - ${aluno.status}`;
+        alunosList.appendChild(li);
+      });
+
+      alunosContainer.style.display = 'block';
+      setTimeout(() => alunosContainer.style.opacity = 1, 10);
+
+    } catch (err) {
+      console.error('Erro ao buscar alunos:', err);
+      alunosList.innerHTML = '<li>Não foi possível carregar os alunos.</li>';
+      alunosContainer.style.display = 'block';
+      setTimeout(() => alunosContainer.style.opacity = 1, 10);
+    }
+  });
+
+  closeAlunos.addEventListener('click', () => {
+    alunosContainer.style.opacity = 0;
+    setTimeout(() => alunosContainer.style.display = 'none', 300);
+  });
+</script>
 
 {% endblock %}
