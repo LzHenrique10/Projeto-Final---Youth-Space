@@ -10,8 +10,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%; /* Ocupa toda a altura da barra */
-  padding: 0 45px; /* Espaço lateral */
+  height: 100%;
+  /* Ocupa toda a altura da barra */
+  padding: 0 45px;
+  /* Espaço lateral */
 }
 
 .youth-nav {
@@ -25,7 +27,8 @@
 }
 
 .nav a:hover {
-  color: #ffd700; /* Efeito hover opcional */
+  color: #ffd700;
+  /* Efeito hover opcional */
 }
 
 .login-page {
@@ -50,16 +53,19 @@
 /* Estilo dos títulos h2 */
 h2 {
   color: white;
-  font-size: 38px; /* Reduzido para um tamanho menor */
+  font-size: 38px;
+  /* Reduzido para um tamanho menor */
   font-weight: 700;
-  margin-bottom: 20px; /* Espaçamento reduzido */
+  margin-bottom: 20px;
+  /* Espaçamento reduzido */
   text-align: center;
 }
 
 /* Estilo do formulário */
-form {    
+form {
   display: flex;
-  gap: 12px; /* Espaçamento reduzido */
+  gap: 12px;
+  /* Espaçamento reduzido */
   flex-direction: column;
 }
 
@@ -69,13 +75,18 @@ form button {
 }
 
 /* Estilo dos inputs e botões */
-input, button {      
+input,
+button {
   border: none;
   outline: none;
-  border-radius: 10px; /* Raio de borda ligeiramente menor */
-  padding: 10px 16px; /* Padding reduzido */
-  font-size: 14px; /* Fonte menor */
-  width: 300px; /* Largura reduzida */
+  border-radius: 10px;
+  /* Raio de borda ligeiramente menor */
+  padding: 10px 16px;
+  /* Padding reduzido */
+  font-size: 14px;
+  /* Fonte menor */
+  width: 300px;
+  /* Largura reduzida */
 }
 
 /* Estilo dos inputs */
@@ -86,16 +97,18 @@ input {
 
 /* Estilo do placeholder dos inputs */
 input::placeholder {
-  color: rgba(255, 255, 255, 0.5);    
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* Estilo dos botões */
 button {
   font-weight: 700;
-  margin-top: 15px; /* Margem superior reduzida */
+  margin-top: 15px;
+  /* Margem superior reduzida */
   cursor: pointer;
   color: rgba(34, 33, 33, 0.76);
-  padding: 12px; /* Padding ajustado */
+  padding: 12px;
+  /* Padding ajustado */
   transition: all 0.3s ease;
 }
 
@@ -106,9 +119,11 @@ button:hover {
 
 /* Estilo dos parágrafos */
 p {
-  margin-bottom: 20px; /* Espaçamento reduzido */
+  margin-bottom: 20px;
+  /* Espaçamento reduzido */
   text-align: center;
-  width: 300px; /* Largura ajustada */
+  width: 300px;
+  /* Largura ajustada */
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -117,17 +132,21 @@ p {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   background: transparent;
 }
 
 /* Estilo do card - reduzido */
 .card {
-  width: 70%; /* Reduzido para 60% */
-  height: 80vh; /* Altura reduzida */
+  width: 70%;
+  /* Reduzido para 60% */
+  height: 80vh;
+  /* Altura reduzida */
   background-color: rgba(255, 255, 255, 0.10);
-  border-radius: 24px; /* Raio de borda ajustado */
-  padding: 20px; /* Padding reduzido */
+  border-radius: 24px;
+  /* Raio de borda ajustado */
+  padding: 20px;
+  /* Padding reduzido */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,7 +155,8 @@ p {
 }
 
 /* Estilo das seções esquerda e direita do card */
-.esquerda, .direita {
+.esquerda,
+.direita {
   width: 50%;
   height: 100%;
   display: flex;
@@ -147,7 +167,10 @@ p {
 }
 
 /* Estilo dos formulários e seções de login e cadastro */
-.formLogin, .facaLogin, .formCadastro, .facaCadastro {    
+.formLogin,
+.facaLogin,
+.formCadastro,
+.facaCadastro {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,10 +178,12 @@ p {
 }
 
 /* Estilo das seções de login e cadastro */
-.facaLogin, .facaCadastro {
+.facaLogin,
+.facaCadastro {
   position: absolute;
 
-  h2, p {
+  h2,
+  p {
     color: rgba(46, 44, 44, 0.76)
   }
 
@@ -178,7 +203,7 @@ p {
   background-position: center;
   position: absolute;
   top: 0;
-  right: 0;    
+  right: 0;
   z-index: 0;
 }
 
@@ -188,23 +213,23 @@ p {
   pointer-events: none;
 }
 
-.card.loginActive .facaCadastro{
+.card.loginActive .facaCadastro {
   transform: translateX(0);
-  transition: all .3s .3s;   
-  opacity: 1; 
-}
-
-.card.loginActive .formLogin{
   transition: all .3s .3s;
-  opacity: 1; 
+  opacity: 1;
 }
 
-.card.loginActive .formCadastro{
+.card.loginActive .formLogin {
+  transition: all .3s .3s;
+  opacity: 1;
+}
+
+.card.loginActive .formCadastro {
   opacity: 0;
   pointer-events: none;
 }
 
-.card.loginActive::after{
+.card.loginActive::after {
   transform: translateX(50%);
 }
 
@@ -214,24 +239,24 @@ p {
   pointer-events: none;
 }
 
-.card.cadastroActive .formLogin{
+.card.cadastroActive .formLogin {
   opacity: 0;
   pointer-events: none;
 }
 
-.card.cadastroActive::after{
+.card.cadastroActive::after {
   transform: translateX(-50%);
 }
 
-.card.cadastroActive .facaLogin{
+.card.cadastroActive .facaLogin {
   transform: translateX(0);
-  transition: all .3s .3s;   
-  opacity: 1; 
+  transition: all .3s .3s;
+  opacity: 1;
 }
 
-.card.cadastroActive .formCadastro{
+.card.cadastroActive .formCadastro {
   transition: all .3s .3s;
-  opacity: 1; 
+  opacity: 1;
 }
 
 /* Transições */
@@ -271,11 +296,13 @@ p {
 
   .card {
     width: 90%;
-    height: 60vh; /* Altura ainda mais reduzida */
+    height: 60vh;
+    /* Altura ainda mais reduzida */
     padding: 15px;
   }
 
-  input, button {
+  input,
+  button {
     width: 100%;
     font-size: 14px;
     padding: 8px;
@@ -286,17 +313,20 @@ p {
     font-size: 12px;
   }
 
-  .esquerda, .direita {
+  .esquerda,
+  .direita {
     width: 100%;
     margin-bottom: 15px;
   }
 
-  .formLogin, .formCadastro {
+  .formLogin,
+  .formCadastro {
     width: 100%;
     padding: 10px;
   }
 
-  .facaLogin, .facaCadastro {
+  .facaLogin,
+  .facaCadastro {
     width: 100%;
     transform: translateX(0);
     margin-bottom: 15px;
@@ -305,7 +335,8 @@ p {
     align-items: center;
   }
 
-  .facaLogin button, .facaCadastro button {
+  .facaLogin button,
+  .facaCadastro button {
     width: auto;
     font-size: 14px;
     padding: 6px 12px;
@@ -322,11 +353,13 @@ p {
 
   .card {
     width: 95%;
-    height: 50vh; /* Altura ainda mais reduzida */
+    height: 50vh;
+    /* Altura ainda mais reduzida */
     padding: 10px;
   }
 
-  input, button {
+  input,
+  button {
     font-size: 12px;
     padding: 6px;
   }
@@ -337,7 +370,8 @@ p {
     margin-bottom: 6px;
   }
 
-  .facaLogin, .facaCadastro {
+  .facaLogin,
+  .facaCadastro {
     width: 100%;
     transform: translateX(0);
     margin-bottom: 15px;
@@ -347,20 +381,23 @@ p {
     align-items: center;
   }
 
-  .facaLogin p, .facaCadastro p {
+  .facaLogin p,
+  .facaCadastro p {
     width: 90%;
     font-size: 10px;
     text-align: center;
     margin-bottom: 6px;
   }
 
-  .facaLogin button, .facaCadastro button {
+  .facaLogin button,
+  .facaCadastro button {
     width: auto;
     font-size: 12px;
     padding: 4px 10px;
   }
 
-  .formLogin, .formCadastro {
+  .formLogin,
+  .formCadastro {
     margin-bottom: 15px;
   }
 
@@ -380,289 +417,297 @@ p {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
   border-radius: 0 0 12px 18px;
 }
+
 .header {
-    position: relative;
-    background: linear-gradient(90deg, #4a0e5a 0%, #000428 50%, #004e92 100%);
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    overflow: hidden;
+  position: relative;
+  background: linear-gradient(90deg, #4a0e5a 0%, #000428 50%, #004e92 100%);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  overflow: hidden;
 }
 
 .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
-    letter-spacing: 1px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
+  letter-spacing: 1px;
 }
 
 .nav-link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-link:hover {
-    background: rgba(138, 43, 226, 0.5);
-    transform: translateY(-2px);
+  background: rgba(138, 43, 226, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Efeito de Estrelas */
 .stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .stars::before,
 .stars::after,
 .stars::nth-child(3),
 .stars::nth-child(4) {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 50%;
-    animation: twinkle 3s infinite ease-in-out;
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 3s infinite ease-in-out;
 }
 
 .stars::before {
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
 }
 
 .stars::after {
-    top: 60%;
-    right: 20%;
-    animation-delay: 1s;
+  top: 60%;
+  right: 20%;
+  animation-delay: 1s;
 }
 
 .stars:nth-child(3) {
-    top: 40%;
-    left: 50%;
-    animation-delay: 0.5s;
-    width: 1px;
-    height: 1px;
+  top: 40%;
+  left: 50%;
+  animation-delay: 0.5s;
+  width: 1px;
+  height: 1px;
 }
 
 .stars:nth-child(4) {
-    top: 80%;
-    right: 50%;
-    animation-delay: 2s;
-    width: 3px;
-    height: 3px;
+  top: 80%;
+  right: 50%;
+  animation-delay: 2s;
+  width: 3px;
+  height: 3px;
 }
 
 @keyframes twinkle {
-    0%, 100% { 
-        opacity: 0; 
-        transform: scale(0) rotate(0deg); 
-    }
-    50% { 
-        opacity: 1; 
-        transform: scale(1.5) rotate(180deg); 
-    }
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.5) rotate(180deg);
+  }
 }
 
 /* Layout Principal do Dashboard */
 .dashboard {
-    display: flex;
-    min-height: calc(100vh - 80px);
-    padding: 2rem;
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
+  display: flex;
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* Sidebar (Menu Lateral) */
 .sidebar {
-    width: 250px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    height: fit-content;
+  width: 250px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: fit-content;
 }
 
 .sidebar ul {
-    list-style: none;
+  list-style: none;
 }
 
 .sidebar li {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .sidebar a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
 .sidebar a i {
-    margin-right: 0.75rem;
-    width: 20px;
-    text-align: center;
+  margin-right: 0.75rem;
+  width: 20px;
+  text-align: center;
 }
 
 .sidebar a:hover {
-    background: rgba(138, 43, 226, 0.3);
-    color: #fff;
-    transform: translateX(5px);
+  background: rgba(138, 43, 226, 0.3);
+  color: #fff;
+  transform: translateX(5px);
 }
 
 /* Conteúdo Principal */
 .content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .content h2 {
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    color: #fff;
-    text-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
 }
 
 /* Cards de Resumo */
 .summary-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 .card-home {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 1.5rem;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    color: #B2BEB5;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: #B2BEB5;
 }
 
 .card-home::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #8a2be2, #004e92);
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #8a2be2, #004e92);
 }
 
 .card-home:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
 }
 
 .card-home h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .card-home p {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
 }
 
 /* Ações Rápidas */
 .quick-actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background: linear-gradient(90deg, #8a2be2, #004e92);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #8a2be2, #004e92);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .dashboard {
-        flex-direction: column;
-        padding: 1rem;
-    }
-    
-    .sidebar {
-        width: 100%;
-        order: 2;
-    }
-    
-    .summary-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .quick-actions {
-        flex-direction: column;
-    }
-    
-    .header {
-        padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
+  .dashboard {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .sidebar {
+    width: 100%;
+    order: 2;
+  }
+
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-actions {
+    flex-direction: column;
+  }
+
+  .header {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
-    .summary-cards {
-        grid-template-columns: 1fr;
-    }
-    
-    .logo {
-        font-size: 1.5rem;
-    }
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
 }
 
 .btn {
@@ -671,6 +716,7 @@ p {
   justify-content: center;
 
 }
+
 /* Container principal escondido por padrão */
 #alunos-container {
   display: none;
@@ -692,7 +738,7 @@ p {
   backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 20px 25px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   color: #fff;
   z-index: 1000;
 }
@@ -711,7 +757,7 @@ p {
 
 .alunos-card-modern li {
   padding: 8px 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Botão de fechar */
@@ -730,4 +776,209 @@ p {
   width: 15px;
 }
 
+/* Container principal escondido por padrão */
+#professores-container {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
+/* Card moderno */
+.professores-card-modern {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  max-height: 70%;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 20px 25px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  z-index: 1000;
+}
+
+/* Título centralizado */
+.professores-card-modern h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Lista de alunos */
+.professores-card-modern ul {
+  list-style: none;
+  padding: 0;
+}
+
+.professores-card-modern li {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.formLogin .avatar,
+.formCadastro .avatar {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formLogin .avatar i,
+.formCadastro .avatar i {
+  font-size: 80px;
+  color: #968ee2;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.formLogin .avatar i:hover,
+.formCadastro .avatar i:hover {
+  transform: scale(1.1);
+  color: #ab7cb8;
+}
+
+/* Grupo de input com ícone */
+.input-group {
+  position: relative;
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  /* espaço para ícone */
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input-group i {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* Efeito no foco do input */
+.input-group input:focus {
+  border: 1px solid #968ee2;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.input-group input:focus+i {
+  color: #ab7cb8;
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* Botões do login/cadastro */
+.formLogin button,
+.formCadastro button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  color: #222;
+  background: linear-gradient(90deg, #968ee2 0%, #ab7cb8 100%);
+  transition: all 0.3s ease;
+}
+
+.formLogin button:hover,
+.formCadastro button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #ab7cb8 0%, #968ee2 100%);
+}
+
+/* Modal container */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 400px;
+  max-width: 90%;
+  background: #1e1e2f;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+  display: none;
+  opacity: 0;
+}
+
+/* Mostrar modal */
+.modal.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Close button */
+.close-btn-modal {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 10px;
+  left: 300px;
+  width: 25px;
+  background: #ff4b5c;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Inputs e select */
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+/* Botão */
+.modal-content .btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-content .btn:hover {
+  background: #45a049;
+}
+
+/* Mensagem de erro */
+#aluno-msg {
+  margin-top: 10px;
+  color: #ff4b5c;
+}
+
+.cada-aluno {
+  text-align: center;
+  margin-bottom: 15px;
+}

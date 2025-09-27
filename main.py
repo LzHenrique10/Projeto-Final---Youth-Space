@@ -39,20 +39,45 @@ async def login_page(request: Request):
 
 @app.post("/login")
 async def login(email: str = Form(...), senha: str = Form(...), db: Session = Depends(get_db)):
+    # Tenta achar professor
     user = db.query(models.Professor).filter(models.Professor.email == email).first()
+    tipo = "Professor"
+    
+    # Se não achar professor, tenta achar aluno
     if not user:
         user = db.query(models.Aluno).filter(models.Aluno.email == email).first()
+        tipo = "Aluno"
+    
     if not user or user.senha != senha:
         raise HTTPException(status_code=400, detail="Email ou senha inválidos")
+    
     # Aqui você pode criar session ou token
-    return {"msg": "Login realizado com sucesso!"}
+    return {"msg": f"Login realizado com sucesso!", "tipo": tipo, "nome": user.nome}
 
 
-# ----------------- Home ------------------------------------------------------------------------
 
+# ----------------- HOME -----------------
 @app.get("/home", response_class=HTMLResponse)
-async def home_page(request: Request):
-    return templates.TemplateResponse("home.html", {"request": request, "user": None})
+async def home_page(request: Request, db: Session = Depends(get_db)):
+    total_alunos = db.query(models.Aluno).count()
+    total_professores = db.query(models.Professor).count()
+    total_cursos = db.query(models.Curso).count()
+    total_turmas = db.query(models.Turma).count()
+
+    return templates.TemplateResponse(
+        "home.html",
+        {
+            "request": request,
+            "user": None,
+            "total_alunos": total_alunos,
+            "total_professores": total_professores,
+            "total_cursos": total_cursos,
+            "total_turmas": total_turmas
+        }
+    )
+
+
+
 
 # ----------------- CRUD PROFESSORES -----------------
 @app.post("/professores/", response_model=schemas.ProfessorSchema, status_code=status.HTTP_201_CREATED, tags=["Professores"])
@@ -109,7 +134,39 @@ def create_aluno(aluno: schemas.AlunoCreate, db: Session = Depends(get_db)):
 
 @app.get("/alunos/", response_model=List[schemas.AlunoSchema], tags=["Alunos"])
 def read_alunos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    return db.query(models.Aluno).offset(skip).limit(limit).all()
+    alunos = db.query(models.Aluno).offset(skip).limit(limit).all()
+
+    # Ajusta status só para a resposta
+    response = []
+    for aluno in alunos:
+        aluno_dict = aluno.__dict__.copy()  # copia o objeto para não mexer no DB
+        if not aluno_dict.get("status"):
+            aluno_dict["status"] = "ativo"
+        response.append(aluno_dict)
+    
+    return response
+
+@app.post("/register/aluno")
+def register_aluno(data: schemas.AlunoCreate, db: Session = Depends(get_db)):
+    if db.query(models.Aluno).filter(models.Aluno.email == data.email).first():
+        raise HTTPException(status_code=400, detail="Email já cadastrado")
+    
+    novo_aluno = models.Aluno(nome=data.nome, email=data.email, senha=data.senha, status="ativo")
+    db.add(novo_aluno)
+    db.commit()
+    db.refresh(novo_aluno)
+    
+    return {"msg": "Cadastro realizado com sucesso!", "id_aluno": novo_aluno.id_aluno}
+
+@app.post("/alunos/create", response_model=schemas.AlunoSchema, status_code=status.HTTP_201_CREATED)
+def criar_aluno(aluno: schemas.AlunoCreate, db: Session = Depends(get_db)):
+    if db.query(models.Aluno).filter(models.Aluno.email == aluno.email).first():
+        raise HTTPException(status_code=400, detail="E-mail já cadastrado")
+    novo_aluno = models.Aluno(**aluno.dict())
+    db.add(novo_aluno)
+    db.commit()
+    db.refresh(novo_aluno)
+    return novo_aluno
 
 @app.get("/alunos/{aluno_id}", response_model=schemas.AlunoSchema, tags=["Alunos"])
 def read_aluno(aluno_id: int, db: Session = Depends(get_db)):
