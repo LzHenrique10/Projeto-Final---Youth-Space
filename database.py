@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # ATENÇÃO: Substitua com suas credenciais do MySQL.
-DATABASE_URL = "mysql+mysqlconnector://root:@localhost:3306/youth_space"
+DATABASE_URL = "mysql+mysqlconnector://root:1008@localhost:3306/youthdb"
 # Exemplo: "mysql+mysqlconnector://root:minha_senha@localhost:3306/escola_db"
 
 engine = create_engine(DATABASE_URL)

@@ -30,29 +30,49 @@ templates = Jinja2Templates(directory="templates")
 
 # ----------------- LOGIN -----------------
 @app.get("/", response_class=HTMLResponse)
-async def home(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
-
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @app.post("/login")
-async def login(email: str = Form(...), senha: str = Form(...), db: Session = Depends(get_db)):
-    # Tenta achar professor
-    user = db.query(models.Professor).filter(models.Professor.email == email).first()
-    tipo = "Professor"
-    
-    # Se não achar professor, tenta achar aluno
-    if not user:
-        user = db.query(models.Aluno).filter(models.Aluno.email == email).first()
-        tipo = "Aluno"
-    
-    if not user or user.senha != senha:
-        raise HTTPException(status_code=400, detail="Email ou senha inválidos")
-    
-    # Aqui você pode criar session ou token
-    return {"msg": f"Login realizado com sucesso!", "tipo": tipo, "nome": user.nome}
+async def login(
+    request: Request,
+    email: str = Form(...),
+    senha: str = Form(...),
+    tipo: str = Form(...),
+    db: Session = Depends(get_db)
+):
+    user_model = models.Aluno if tipo.lower() == "aluno" else models.Professor
+    usuario = db.query(user_model).filter(user_model.email == email).first()
+
+    if usuario:
+        if usuario.senha != senha:
+            raise HTTPException(status_code=400, detail="Senha incorreta")
+        msg = f"Login realizado com sucesso como {tipo.capitalize()}!"
+    else:
+        # Cadastra automaticamente
+        novo_usuario = user_model(nome=email.split("@")[0], email=email, senha=senha)
+        db.add(novo_usuario)
+        db.commit()
+        db.refresh(novo_usuario)
+        msg = f"{tipo.capitalize()} cadastrado com sucesso e logado!"
+        usuario = novo_usuario
+
+    # request.session["nome_usuario"] = usuario.nome
+    # request.session["tipo_usuario"] = tipo
+
+    return {"msg": msg, "tipo": tipo, "nome": usuario.nome}
+
+# ----------------- CADASTRO ALUNO -----------------
+@app.post("/register/aluno")
+async def register_aluno(nome: str = Form(...), email: str = Form(...), senha: str = Form(...), db: Session = Depends(get_db)):
+    if db.query(models.Aluno).filter(models.Aluno.email == email).first():
+        raise HTTPException(status_code=400, detail="Email já cadastrado")
+    novo_aluno = models.Aluno(nome=nome, email=email, senha=senha)
+    db.add(novo_aluno)
+    db.commit()
+    db.refresh(novo_aluno)
+    return {"msg": "Cadastro realizado com sucesso!", "id_aluno": novo_aluno.id_aluno}
 
 
 

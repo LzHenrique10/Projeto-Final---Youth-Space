@@ -8,6 +8,7 @@ class Professor(Base):
     id_professor = Column(Integer, primary_key=True, index=True)
     nome = Column(String(255), nullable=False)
     email = Column(String(255), unique=True, nullable=False, index=True)
+    senha = Column(String(255), unique=True, nullable=False, index=True)
     especializacao = Column(String(100))
     turmas = relationship("Turma", back_populates="professor")
 
@@ -16,6 +17,7 @@ class Aluno(Base):
     id_aluno = Column(Integer, primary_key=True, index=True)
     nome = Column(String(255), nullable=False)
     email = Column(String(255), unique=True, nullable=False, index=True)
+    senha = Column(String(255), unique=True, nullable=False)
     status = Column(String(50), nullable=False, default='ativo')
     matriculas = relationship("Matricula", back_populates="aluno", cascade="all, delete-orphan")
 
@@ -49,3 +51,9 @@ class Matricula(Base):
 
     aluno = relationship("Aluno", back_populates="matriculas")
     turma = relationship("Turma", back_populates="matriculas")
+class Usuario(Base):
+    __tablename__ = "usuarios"
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String(100), nullable=False)
+    email = Column(String(100), unique=True, nullable=False)
+    senha = Column(String(255), nullable=False)

@@ -1,157 +1,184 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<section class="containerPai">
+
+<header class="Barra-de-Navegação">
+  <div class="nav">
+    <a href="#" class="youth-nav">Youth Space</a>
+    <a href="#" class="home-nav">Home</a>
+  </div>
+
+  <section class="containerPai">
     <div class="card cadastroActive">
-
-        <!-- LOGIN -->
-        <div class="esquerda">
-            <div class="formLogin">
-                <div class="avatar">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-                <h2>Fazer Login</h2>
-                <form id="login-form">
-                    <div class="input-group">
-                        <input type="email" name="email" placeholder="Email" required>
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" name="senha" placeholder="Senha" required>
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <button type="submit">Entrar</button>
-                </form>
+      <!-- LOGIN -->
+      <div class="esquerda">
+        <div class="formLogin">
+          <div class="avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <h2>Fazer Login</h2>
+          <form id="login-form">
+            <div class="input-group">
+              <input type="email" name="email" placeholder="Email" required />
+              <i class="fas fa-envelope"></i>
             </div>
-
-            <div class="facaLogin">
-                <h2>Já tem <br>uma conta?</h2>
-                <p>Faça login e conecte-se com sua comunidade! Entre com sua conta e comece a explorar agora.</p>
-                <button class="loginButton">Faça Login</button>
+            <div class="input-group">
+              <input type="password" name="senha" placeholder="Senha" required/>
+              <i class="fas fa-lock"></i>
             </div>
+            <div class="input-group">
+              <label>Tipo:</label>
+              <select name="tipo" required>
+                <option value="aluno">Aluno</option>
+                <option value="professor">Professor</option>
+              </select>
+            </div>
+            <button type="submit">Entrar</button>
+          </form>
         </div>
 
-        <!-- CADASTRO -->
-        <div class="direita">
-            <div class="formCadastro">
-                <div class="avatar">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-                <h2>Cadastro</h2>
-                <form id="cadastro-form">
-                    <div class="input-group">
-                        <input type="text" name="nome" placeholder="Nome" required>
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" name="email" placeholder="Email" required>
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" name="senha" placeholder="Senha" required>
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" name="senha2" placeholder="Confirme a sua senha" required>
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <button type="submit">Cadastrar</button>
-                </form>
-            </div>
+        <div class="facaLogin">
+          <h2>Já tem <br />uma conta?</h2>
+          <p>
+            Faça login e conecte-se com sua comunidade! Entre com sua conta e
+            comece a explorar agora.
+          </p>
+          <button class="loginButton">Faça Login</button>
+        </div>
+      </div>
 
-            <div class="facaCadastro">
-                <h2>Não tem <br>uma conta?</h2>
-                <p>Crie sua conta em poucos segundos e aproveite todos os nossos recursos exclusivos.</p>
-                <button class="cadastroButton">Cadastre-se</button>
+      <!-- CADASTRO -->
+      <div class="direita">
+        <div class="formCadastro">
+          <div class="avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <h2>Cadastro</h2>
+          <form id="cadastro-form">
+            <div class="input-group">
+              <input type="text" name="nome" placeholder="Nome" required />
+              <i class="fas fa-user"></i>
             </div>
+            <div class="input-group">
+              <input type="email" name="email" placeholder="Email" required />
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="input-group">
+              <input
+                type="password"
+                name="senha"
+                placeholder="Senha"
+                required
+              />
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="input-group">
+              <input
+                type="password"
+                name="senha2"
+                placeholder="Confirme a sua senha"
+                required
+              />
+              <i class="fas fa-lock"></i>
+            </div>
+            <button type="submit">Cadastrar</button>
+          </form>
         </div>
 
+        <div class="facaCadastro">
+          <h2>Não tem <br />uma conta?</h2>
+          <p>
+            Crie sua conta em poucos segundos e aproveite todos os nossos
+            recursos exclusivos.
+          </p>
+          <button class="cadastroButton">Cadastre-se</button>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<script>
-// Alterna entre telas de login e cadastro
-let card = document.querySelector('.card');
-let loginButton = document.querySelector('.loginButton');
-let cadastroButton = document.querySelector('.cadastroButton');
+  <script>
+    // Alterna entre telas de login e cadastro
+    let card = document.querySelector(".card");
+    let loginButton = document.querySelector(".loginButton");
+    let cadastroButton = document.querySelector(".cadastroButton");
 
-loginButton.onclick = () => {
-    card.classList.remove('cadastroActive');
-    card.classList.add('loginActive');
-}
+    loginButton.onclick = () => {
+      card.classList.remove("cadastroActive");
+      card.classList.add("loginActive");
+    };
 
-cadastroButton.onclick = () => {
-    card.classList.remove('loginActive');
-    card.classList.add('cadastroActive');
-}
+    cadastroButton.onclick = () => {
+      card.classList.remove("loginActive");
+      card.classList.add("cadastroActive");
+    };
 
-// ===== LOGIN =====
-const loginForm = document.getElementById("login-form");
-loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(loginForm);
-    const data = Object.fromEntries(formData);
+    // ===== LOGIN =====
+    const loginForm = document.getElementById("login-form");
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(loginForm);
+      const data = Object.fromEntries(formData);
 
-    try {
+      try {
         const res = await fetch("/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(data)
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(data),
         });
 
         if (res.ok) {
-            const result = await res.json();
-            alert(`${result.msg}`);
-            window.location.href = "/home";
+          const result = await res.json();
+          alert(`${result.msg}`);
+          window.location.href = "/home";
         } else {
-            const err = await res.json();
-            alert(err.detail || "Erro no login");
+          const err = await res.json();
+          alert(err.detail || "Erro no login");
         }
-    } catch (error) {
+      } catch (error) {
         console.error(error);
         alert("Erro de conexão");
-    }
-});
+      }
+    });
 
-// ===== CADASTRO =====
-const cadastroForm = document.getElementById("cadastro-form");
-cadastroForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(cadastroForm);
-    const data = Object.fromEntries(formData);
+    // ===== CADASTRO =====
+    const cadastroForm = document.getElementById("cadastro-form");
+    cadastroForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(cadastroForm);
+      const data = Object.fromEntries(formData);
 
-    // Verifica se as senhas conferem
-    if (data.senha !== data.senha2) {
+      // Verifica se as senhas conferem
+      if (data.senha !== data.senha2) {
         alert("As senhas não conferem!");
         return;
-    }
+      }
 
-    try {
+      try {
         const res = await fetch("/register/aluno", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams({
-                nome: data.nome,
-                email: data.email,
-                senha: data.senha
-            })
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({
+            nome: data.nome,
+            email: data.email,
+            senha: data.senha,
+          }),
         });
 
         if (res.ok) {
-            const result = await res.json();
-            alert(result.msg);
-            // Volta para login automaticamente
-            card.classList.remove('cadastroActive');
-            card.classList.add('loginActive');
-            cadastroForm.reset();
+          const result = await res.json();
+          alert(result.msg);
+          card.classList.remove("cadastroActive");
+          card.classList.add("loginActive");
+          cadastroForm.reset();
         } else {
-            const err = await res.json();
-            alert(err.detail || "Erro no cadastro");
+          const err = await res.json();
+          alert(err.detail || "Erro no cadastro");
         }
-    } catch (error) {
+      } catch (error) {
         console.error(error);
         alert("Erro de conexão");
-    }
-});
-</script>
+      }
+    });
+  </script>
 {% endblock %}
+</header>
